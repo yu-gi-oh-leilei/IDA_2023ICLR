@@ -1,0 +1,782 @@
+[02/28 09:00:30.292]: Command: main_mlc.py -a IDA-R101-448 --dataset_dir /media/data/maleilei/MLICdataset/ --backbone resnet101 --dataname coco14 --batch-size 128 --print-freq 400 --output ./checkpoint/IDA/ResNet_448_MSCOCO14/bce_attention_bs128_work3 --world-size 1 --rank 0 --dist-url tcp://127.0.0.1:3718 --gamma_pos 0 --gamma_neg 0 --dtgfl --loss_clip 0 --epochs 80 --lr 1e-4 --optim Adam_twd --pretrained --num_class 80 --img_size 448 --weight-decay 1e-4 --cutout --n_holes 1 --cut_fact 0.5 --length 224 --nheads 4 --use_intervention --heavy --early-stop --use_BN --ema-decay 0.9997 --amp --seed 1 --lr_scheduler OneCycleLR --pattern_parameters add_weight --gpus 0,1,2,3
+[02/28 09:00:30.293]: Full config saved to ./checkpoint/IDA/ResNet_448_MSCOCO14/bce_attention_bs128_work3/config.json
+[02/28 09:00:30.293]: world size: 4
+[02/28 09:00:30.293]: dist.get_rank(): 0
+[02/28 09:00:30.293]: local_rank: 0
+[02/28 09:00:30.293]: ==========================================
+[02/28 09:00:30.294]: ==========       CONFIG      =============
+[02/28 09:00:30.294]: ==========================================
+[02/28 09:00:30.294]: dataname: coco14
+[02/28 09:00:30.294]: dataset_dir: /media/data/maleilei/MLICdataset/
+[02/28 09:00:30.294]: img_size: 448
+[02/28 09:00:30.294]: output: ./checkpoint/IDA/ResNet_448_MSCOCO14/bce_attention_bs128_work3
+[02/28 09:00:30.294]: num_class: 80
+[02/28 09:00:30.294]: pretrained: True
+[02/28 09:00:30.294]: frozen_backbone: False
+[02/28 09:00:30.294]: optim: Adam_twd
+[02/28 09:00:30.294]: lr_scheduler: OneCycleLR
+[02/28 09:00:30.295]: pattern_parameters: add_weight
+[02/28 09:00:30.295]: momentum: 0.9
+[02/28 09:00:30.295]: warmup_epoch: 0
+[02/28 09:00:30.295]: warmup_scheduler: False
+[02/28 09:00:30.295]: epoch_step: [10, 20]
+[02/28 09:00:30.295]: arch: IDA-R101-448
+[02/28 09:00:30.295]: eps: 1e-05
+[02/28 09:00:30.295]: dtgfl: True
+[02/28 09:00:30.295]: gamma_pos: 0.0
+[02/28 09:00:30.295]: gamma_neg: 0.0
+[02/28 09:00:30.295]: loss_dev: -1
+[02/28 09:00:30.296]: loss_clip: 0.0
+[02/28 09:00:30.296]: workers: 8
+[02/28 09:00:30.296]: epochs: 80
+[02/28 09:00:30.296]: val_interval: 1
+[02/28 09:00:30.296]: start_epoch: 0
+[02/28 09:00:30.296]: batch_size: 128
+[02/28 09:00:30.296]: lr: 0.0001
+[02/28 09:00:30.296]: lrp: 0.1
+[02/28 09:00:30.296]: weight_decay: 0.0001
+[02/28 09:00:30.296]: print_freq: 400
+[02/28 09:00:30.297]: resume: 
+[02/28 09:00:30.297]: resume_omit: []
+[02/28 09:00:30.297]: evaluate: False
+[02/28 09:00:30.297]: ema_decay: 0.9997
+[02/28 09:00:30.297]: ema_epoch: 0
+[02/28 09:00:30.297]: world_size: 4
+[02/28 09:00:30.297]: rank: 0
+[02/28 09:00:30.297]: dist_url: tcp://127.0.0.1:3718
+[02/28 09:00:30.297]: seed: 1
+[02/28 09:00:30.297]: local_rank: 0
+[02/28 09:00:30.297]: use_BN: True
+[02/28 09:00:30.298]: crop: False
+[02/28 09:00:30.298]: cutout: True
+[02/28 09:00:30.298]: n_holes: 1
+[02/28 09:00:30.298]: length: 224
+[02/28 09:00:30.298]: cut_fact: 0.5
+[02/28 09:00:30.298]: orid_norm: False
+[02/28 09:00:30.298]: remove_norm: False
+[02/28 09:00:30.298]: use_intervention: True
+[02/28 09:00:30.298]: heavy: True
+[02/28 09:00:30.298]: dropout: 0.1
+[02/28 09:00:30.298]: nheads: 4
+[02/28 09:00:30.299]: backbone: resnet101
+[02/28 09:00:30.299]: keep_input_proj: False
+[02/28 09:00:30.299]: amp: True
+[02/28 09:00:30.299]: early_stop: True
+[02/28 09:00:30.299]: kill_stop: False
+[02/28 09:00:30.299]: out_aps: False
+[02/28 09:00:30.299]: gpus: 0,1,2,3
+[02/28 09:00:30.299]: device: cuda
+[02/28 09:00:30.299]: ==========================================
+[02/28 09:00:30.299]: ===========        END        ============
+[02/28 09:00:30.299]: ==========================================
+[02/28 09:00:30.299]: 
+
+[02/28 09:00:33.571]: number of params:53165120
+[02/28 09:00:33.574]: params:
+{
+  "module.backbone.resnet_layer.0.weight": 9408,
+  "module.backbone.resnet_layer.1.weight": 64,
+  "module.backbone.resnet_layer.1.bias": 64,
+  "module.backbone.resnet_layer.4.0.conv1.weight": 4096,
+  "module.backbone.resnet_layer.4.0.bn1.weight": 64,
+  "module.backbone.resnet_layer.4.0.bn1.bias": 64,
+  "module.backbone.resnet_layer.4.0.conv2.weight": 36864,
+  "module.backbone.resnet_layer.4.0.bn2.weight": 64,
+  "module.backbone.resnet_layer.4.0.bn2.bias": 64,
+  "module.backbone.resnet_layer.4.0.conv3.weight": 16384,
+  "module.backbone.resnet_layer.4.0.bn3.weight": 256,
+  "module.backbone.resnet_layer.4.0.bn3.bias": 256,
+  "module.backbone.resnet_layer.4.0.downsample.0.weight": 16384,
+  "module.backbone.resnet_layer.4.0.downsample.1.weight": 256,
+  "module.backbone.resnet_layer.4.0.downsample.1.bias": 256,
+  "module.backbone.resnet_layer.4.1.conv1.weight": 16384,
+  "module.backbone.resnet_layer.4.1.bn1.weight": 64,
+  "module.backbone.resnet_layer.4.1.bn1.bias": 64,
+  "module.backbone.resnet_layer.4.1.conv2.weight": 36864,
+  "module.backbone.resnet_layer.4.1.bn2.weight": 64,
+  "module.backbone.resnet_layer.4.1.bn2.bias": 64,
+  "module.backbone.resnet_layer.4.1.conv3.weight": 16384,
+  "module.backbone.resnet_layer.4.1.bn3.weight": 256,
+  "module.backbone.resnet_layer.4.1.bn3.bias": 256,
+  "module.backbone.resnet_layer.4.2.conv1.weight": 16384,
+  "module.backbone.resnet_layer.4.2.bn1.weight": 64,
+  "module.backbone.resnet_layer.4.2.bn1.bias": 64,
+  "module.backbone.resnet_layer.4.2.conv2.weight": 36864,
+  "module.backbone.resnet_layer.4.2.bn2.weight": 64,
+  "module.backbone.resnet_layer.4.2.bn2.bias": 64,
+  "module.backbone.resnet_layer.4.2.conv3.weight": 16384,
+  "module.backbone.resnet_layer.4.2.bn3.weight": 256,
+  "module.backbone.resnet_layer.4.2.bn3.bias": 256,
+  "module.backbone.resnet_layer.5.0.conv1.weight": 32768,
+  "module.backbone.resnet_layer.5.0.bn1.weight": 128,
+  "module.backbone.resnet_layer.5.0.bn1.bias": 128,
+  "module.backbone.resnet_layer.5.0.conv2.weight": 147456,
+  "module.backbone.resnet_layer.5.0.bn2.weight": 128,
+  "module.backbone.resnet_layer.5.0.bn2.bias": 128,
+  "module.backbone.resnet_layer.5.0.conv3.weight": 65536,
+  "module.backbone.resnet_layer.5.0.bn3.weight": 512,
+  "module.backbone.resnet_layer.5.0.bn3.bias": 512,
+  "module.backbone.resnet_layer.5.0.downsample.0.weight": 131072,
+  "module.backbone.resnet_layer.5.0.downsample.1.weight": 512,
+  "module.backbone.resnet_layer.5.0.downsample.1.bias": 512,
+  "module.backbone.resnet_layer.5.1.conv1.weight": 65536,
+  "module.backbone.resnet_layer.5.1.bn1.weight": 128,
+  "module.backbone.resnet_layer.5.1.bn1.bias": 128,
+  "module.backbone.resnet_layer.5.1.conv2.weight": 147456,
+  "module.backbone.resnet_layer.5.1.bn2.weight": 128,
+  "module.backbone.resnet_layer.5.1.bn2.bias": 128,
+  "module.backbone.resnet_layer.5.1.conv3.weight": 65536,
+  "module.backbone.resnet_layer.5.1.bn3.weight": 512,
+  "module.backbone.resnet_layer.5.1.bn3.bias": 512,
+  "module.backbone.resnet_layer.5.2.conv1.weight": 65536,
+  "module.backbone.resnet_layer.5.2.bn1.weight": 128,
+  "module.backbone.resnet_layer.5.2.bn1.bias": 128,
+  "module.backbone.resnet_layer.5.2.conv2.weight": 147456,
+  "module.backbone.resnet_layer.5.2.bn2.weight": 128,
+  "module.backbone.resnet_layer.5.2.bn2.bias": 128,
+  "module.backbone.resnet_layer.5.2.conv3.weight": 65536,
+  "module.backbone.resnet_layer.5.2.bn3.weight": 512,
+  "module.backbone.resnet_layer.5.2.bn3.bias": 512,
+  "module.backbone.resnet_layer.5.3.conv1.weight": 65536,
+  "module.backbone.resnet_layer.5.3.bn1.weight": 128,
+  "module.backbone.resnet_layer.5.3.bn1.bias": 128,
+  "module.backbone.resnet_layer.5.3.conv2.weight": 147456,
+  "module.backbone.resnet_layer.5.3.bn2.weight": 128,
+  "module.backbone.resnet_layer.5.3.bn2.bias": 128,
+  "module.backbone.resnet_layer.5.3.conv3.weight": 65536,
+  "module.backbone.resnet_layer.5.3.bn3.weight": 512,
+  "module.backbone.resnet_layer.5.3.bn3.bias": 512,
+  "module.backbone.resnet_layer.6.0.conv1.weight": 131072,
+  "module.backbone.resnet_layer.6.0.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.0.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.0.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.0.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.0.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.0.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.0.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.0.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.0.downsample.0.weight": 524288,
+  "module.backbone.resnet_layer.6.0.downsample.1.weight": 1024,
+  "module.backbone.resnet_layer.6.0.downsample.1.bias": 1024,
+  "module.backbone.resnet_layer.6.1.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.1.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.1.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.1.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.1.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.1.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.1.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.1.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.1.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.2.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.2.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.2.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.2.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.2.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.2.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.2.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.2.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.2.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.3.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.3.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.3.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.3.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.3.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.3.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.3.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.3.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.3.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.4.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.4.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.4.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.4.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.4.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.4.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.4.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.4.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.4.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.5.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.5.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.5.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.5.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.5.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.5.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.5.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.5.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.5.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.6.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.6.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.6.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.6.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.6.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.6.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.6.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.6.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.6.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.7.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.7.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.7.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.7.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.7.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.7.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.7.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.7.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.7.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.8.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.8.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.8.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.8.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.8.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.8.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.8.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.8.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.8.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.9.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.9.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.9.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.9.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.9.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.9.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.9.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.9.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.9.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.10.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.10.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.10.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.10.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.10.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.10.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.10.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.10.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.10.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.11.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.11.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.11.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.11.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.11.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.11.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.11.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.11.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.11.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.12.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.12.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.12.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.12.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.12.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.12.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.12.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.12.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.12.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.13.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.13.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.13.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.13.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.13.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.13.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.13.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.13.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.13.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.14.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.14.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.14.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.14.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.14.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.14.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.14.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.14.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.14.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.15.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.15.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.15.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.15.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.15.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.15.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.15.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.15.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.15.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.16.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.16.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.16.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.16.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.16.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.16.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.16.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.16.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.16.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.17.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.17.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.17.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.17.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.17.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.17.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.17.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.17.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.17.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.18.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.18.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.18.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.18.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.18.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.18.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.18.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.18.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.18.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.19.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.19.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.19.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.19.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.19.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.19.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.19.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.19.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.19.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.20.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.20.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.20.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.20.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.20.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.20.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.20.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.20.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.20.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.21.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.21.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.21.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.21.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.21.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.21.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.21.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.21.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.21.bn3.bias": 1024,
+  "module.backbone.resnet_layer.6.22.conv1.weight": 262144,
+  "module.backbone.resnet_layer.6.22.bn1.weight": 256,
+  "module.backbone.resnet_layer.6.22.bn1.bias": 256,
+  "module.backbone.resnet_layer.6.22.conv2.weight": 589824,
+  "module.backbone.resnet_layer.6.22.bn2.weight": 256,
+  "module.backbone.resnet_layer.6.22.bn2.bias": 256,
+  "module.backbone.resnet_layer.6.22.conv3.weight": 262144,
+  "module.backbone.resnet_layer.6.22.bn3.weight": 1024,
+  "module.backbone.resnet_layer.6.22.bn3.bias": 1024,
+  "module.backbone.resnet_layer.7.0.conv1.weight": 524288,
+  "module.backbone.resnet_layer.7.0.bn1.weight": 512,
+  "module.backbone.resnet_layer.7.0.bn1.bias": 512,
+  "module.backbone.resnet_layer.7.0.conv2.weight": 2359296,
+  "module.backbone.resnet_layer.7.0.bn2.weight": 512,
+  "module.backbone.resnet_layer.7.0.bn2.bias": 512,
+  "module.backbone.resnet_layer.7.0.conv3.weight": 1048576,
+  "module.backbone.resnet_layer.7.0.bn3.weight": 2048,
+  "module.backbone.resnet_layer.7.0.bn3.bias": 2048,
+  "module.backbone.resnet_layer.7.0.downsample.0.weight": 2097152,
+  "module.backbone.resnet_layer.7.0.downsample.1.weight": 2048,
+  "module.backbone.resnet_layer.7.0.downsample.1.bias": 2048,
+  "module.backbone.resnet_layer.7.1.conv1.weight": 1048576,
+  "module.backbone.resnet_layer.7.1.bn1.weight": 512,
+  "module.backbone.resnet_layer.7.1.bn1.bias": 512,
+  "module.backbone.resnet_layer.7.1.conv2.weight": 2359296,
+  "module.backbone.resnet_layer.7.1.bn2.weight": 512,
+  "module.backbone.resnet_layer.7.1.bn2.bias": 512,
+  "module.backbone.resnet_layer.7.1.conv3.weight": 1048576,
+  "module.backbone.resnet_layer.7.1.bn3.weight": 2048,
+  "module.backbone.resnet_layer.7.1.bn3.bias": 2048,
+  "module.backbone.resnet_layer.7.2.conv1.weight": 1048576,
+  "module.backbone.resnet_layer.7.2.bn1.weight": 512,
+  "module.backbone.resnet_layer.7.2.bn1.bias": 512,
+  "module.backbone.resnet_layer.7.2.conv2.weight": 2359296,
+  "module.backbone.resnet_layer.7.2.bn2.weight": 512,
+  "module.backbone.resnet_layer.7.2.bn2.bias": 512,
+  "module.backbone.resnet_layer.7.2.conv3.weight": 1048576,
+  "module.backbone.resnet_layer.7.2.bn3.weight": 2048,
+  "module.backbone.resnet_layer.7.2.bn3.bias": 2048,
+  "module.clf.head.0.weight": 40960,
+  "module.clf.head.1.weight": 40960,
+  "module.clf.head.2.weight": 40960,
+  "module.clf.head.3.weight": 40960,
+  "module.clf.att_layers.layers.0.att.q_proj.weight": 262144,
+  "module.clf.att_layers.layers.0.att.q_proj.bias": 512,
+  "module.clf.att_layers.layers.0.att.k_proj.weight": 262144,
+  "module.clf.att_layers.layers.0.att.k_proj.bias": 512,
+  "module.clf.att_layers.layers.0.att.v_proj.weight": 262144,
+  "module.clf.att_layers.layers.0.att.v_proj.bias": 512,
+  "module.clf.att_layers.layers.0.att.out_proj.weight": 262144,
+  "module.clf.att_layers.layers.0.att.out_proj.bias": 512,
+  "module.clf.att_layers.layers.0.linear1.weight": 1048576,
+  "module.clf.att_layers.layers.0.linear1.bias": 2048,
+  "module.clf.att_layers.layers.0.linear2.weight": 1048576,
+  "module.clf.att_layers.layers.0.linear2.bias": 512,
+  "module.clf.att_layers.layers.0.norm1.weight": 512,
+  "module.clf.att_layers.layers.0.norm1.bias": 512,
+  "module.clf.att_layers.layers.0.norm2.weight": 512,
+  "module.clf.att_layers.layers.0.norm2.bias": 512,
+  "module.clf.att_layers.layers.1.att.q_proj.weight": 262144,
+  "module.clf.att_layers.layers.1.att.q_proj.bias": 512,
+  "module.clf.att_layers.layers.1.att.k_proj.weight": 262144,
+  "module.clf.att_layers.layers.1.att.k_proj.bias": 512,
+  "module.clf.att_layers.layers.1.att.v_proj.weight": 262144,
+  "module.clf.att_layers.layers.1.att.v_proj.bias": 512,
+  "module.clf.att_layers.layers.1.att.out_proj.weight": 262144,
+  "module.clf.att_layers.layers.1.att.out_proj.bias": 512,
+  "module.clf.att_layers.layers.1.linear1.weight": 1048576,
+  "module.clf.att_layers.layers.1.linear1.bias": 2048,
+  "module.clf.att_layers.layers.1.linear2.weight": 1048576,
+  "module.clf.att_layers.layers.1.linear2.bias": 512,
+  "module.clf.att_layers.layers.1.norm1.weight": 512,
+  "module.clf.att_layers.layers.1.norm1.bias": 512,
+  "module.clf.att_layers.layers.1.norm2.weight": 512,
+  "module.clf.att_layers.layers.1.norm2.bias": 512,
+  "module.clf.out_proj.weight": 4194304,
+  "module.clf.out_proj.bias": 2048
+}
+[02/28 09:00:33.574]: lr: 0.0001
+[02/28 09:00:33.757]: Using Cutout!!!
+[02/28 09:00:33.758]: mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]
+[02/28 09:00:53.636]: len(train_dataset): 82783
+[02/28 09:00:53.636]: len(val_dataset): 40504
+[02/28 09:00:53.727]: lr:4.000000000000002e-06
+[02/28 09:01:04.501]: Epoch: [0/80][  0/646]  T 10.772 (10.772)  DT 3.172 (3.172)  S1 3.0 (3.0)  SA 11.9 (11.9)  LR 4.000e-06  Loss 25.865 (25.865)  Mem 12969
+[02/28 09:04:15.694]: Epoch: [0/80][400/646]  T 0.462 (0.504)  DT 0.000 (0.008)  S1 69.3 (63.5)  SA 277.1 (254.1)  LR 4.356e-06  Loss 2.996 (4.898)  Mem 13028
+[02/28 09:06:12.837]: Test: [  0/317]  Time 1.930 (1.930)  Loss 2.277 (2.277)  Mem 13028
+[02/28 09:06:56.206]: => synchronize...
+[02/28 09:07:18.788]:   mAP: 55.43308032927045
+[02/28 09:07:20.566]: Test: [  0/317]  Time 1.770 (1.770)  Loss 18.453 (18.453)  Mem 13028
+[02/28 09:08:02.006]: => synchronize...
+[02/28 09:08:27.340]:   mAP: 6.246941180887147
+[02/28 09:08:27.347]: => Test Epoch: [ 0/80]  ETA 9:57:23  TT 0:07:33 (0:07:33)  Loss 2.239  mAP 55.43308  Loss_ema 18.117  mAP_ema 6.24694
+[02/28 09:08:27.353]: 0 | Set best mAP 55.43308032927045 in ep 0
+[02/28 09:08:27.354]:    | best regular mAP 55.43308032927045 in ep 0
+[02/28 09:08:28.282]: lr:4.922484457507576e-06
+[02/28 09:08:31.512]: Epoch: [1/80][  0/646]  T 3.227 (3.227)  DT 2.579 (2.579)  S1 9.9 (9.9)  SA 39.7 (39.7)  LR 4.925e-06  Loss 2.343 (2.343)  Mem 13028
+[02/28 09:11:41.862]: Epoch: [1/80][400/646]  T 0.471 (0.483)  DT 0.000 (0.007)  S1 67.9 (66.3)  SA 271.7 (265.2)  LR 6.411e-06  Loss 1.756 (2.219)  Mem 13028
+[02/28 09:13:42.111]: Test: [  0/317]  Time 2.284 (2.284)  Loss 1.635 (1.635)  Mem 13028
+[02/28 09:14:27.642]: => synchronize...
+[02/28 09:14:48.717]:   mAP: 71.26558638887903
+[02/28 09:14:50.851]: Test: [  0/317]  Time 2.123 (2.123)  Loss 11.604 (11.604)  Mem 13028
+[02/28 09:15:34.399]: => synchronize...
+[02/28 09:15:55.290]:   mAP: 17.220724319528927
+[02/28 09:15:55.297]: => Test Epoch: [ 1/80]  ETA 9:46:04  TT 0:07:27 (0:15:01)  Loss 1.668  mAP 71.26559  Loss_ema 11.362  mAP_ema 17.22072
+[02/28 09:15:55.306]: 1 | Set best mAP 71.26558638887903 in ep 1
+[02/28 09:15:55.306]:    | best regular mAP 71.26558638887903 in ep 1
+[02/28 09:16:01.227]: lr:7.654480431099314e-06
+[02/28 09:16:03.597]: Epoch: [2/80][  0/646]  T 2.367 (2.367)  DT 1.848 (1.848)  S1 13.5 (13.5)  SA 54.1 (54.1)  LR 7.660e-06  Loss 2.127 (2.127)  Mem 13028
+[02/28 09:19:14.226]: Epoch: [2/80][400/646]  T 0.467 (0.481)  DT 0.000 (0.005)  S1 68.5 (66.5)  SA 273.9 (266.0)  LR 1.022e-05  Loss 1.926 (1.862)  Mem 13028
+[02/28 09:21:12.785]: Test: [  0/317]  Time 2.464 (2.464)  Loss 1.473 (1.473)  Mem 13028
+[02/28 09:21:57.595]: => synchronize...
+[02/28 09:22:19.755]:   mAP: 76.58230226496678
+[02/28 09:22:22.429]: Test: [  0/317]  Time 2.663 (2.663)  Loss 7.020 (7.020)  Mem 13028
+[02/28 09:23:06.450]: => synchronize...
+[02/28 09:23:28.488]:   mAP: 42.47961422585195
+[02/28 09:23:28.496]: => Test Epoch: [ 2/80]  ETA 9:39:34  TT 0:07:33 (0:22:34)  Loss 1.475  mAP 76.58230  Loss_ema 6.878  mAP_ema 42.47961
+[02/28 09:23:28.506]: 2 | Set best mAP 76.58230226496678 in ep 2
+[02/28 09:23:28.506]:    | best regular mAP 76.58230226496678 in ep 2
+[02/28 09:23:34.280]: lr:1.209097859479141e-05
+[02/28 09:23:36.905]: Epoch: [3/80][  0/646]  T 2.622 (2.622)  DT 2.122 (2.122)  S1 12.2 (12.2)  SA 48.8 (48.8)  LR 1.210e-05  Loss 1.793 (1.793)  Mem 13028
+[02/28 09:26:46.509]: Epoch: [3/80][400/646]  T 0.469 (0.479)  DT 0.000 (0.006)  S1 68.2 (66.8)  SA 272.9 (267.0)  LR 1.563e-05  Loss 1.473 (1.686)  Mem 13028
+[02/28 09:28:44.866]: Test: [  0/317]  Time 2.001 (2.001)  Loss 1.451 (1.451)  Mem 13028
+[02/28 09:29:28.909]: => synchronize...
+[02/28 09:29:51.819]:   mAP: 78.99681374438943
+[02/28 09:29:53.689]: Test: [  0/317]  Time 1.860 (1.860)  Loss 4.401 (4.401)  Mem 13028
+[02/28 09:30:35.648]: => synchronize...
+[02/28 09:31:02.969]:   mAP: 59.88773283356504
+[02/28 09:31:02.975]: => Test Epoch: [ 3/80]  ETA 9:32:57  TT 0:07:34 (0:30:09)  Loss 1.395  mAP 78.99681  Loss_ema 4.339  mAP_ema 59.88773
+[02/28 09:31:02.982]: 3 | Set best mAP 78.99681374438943 in ep 3
+[02/28 09:31:02.982]:    | best regular mAP 78.99681374438943 in ep 3
+[02/28 09:31:08.815]: lr:1.806145392351026e-05
+[02/28 09:31:11.133]: Epoch: [4/80][  0/646]  T 2.316 (2.316)  DT 1.709 (1.709)  S1 13.8 (13.8)  SA 55.3 (55.3)  LR 1.807e-05  Loss 1.665 (1.665)  Mem 13028
+[02/28 09:34:22.041]: Epoch: [4/80][400/646]  T 0.472 (0.482)  DT 0.000 (0.005)  S1 67.9 (66.4)  SA 271.4 (265.6)  LR 2.244e-05  Loss 1.605 (1.565)  Mem 13028
+[02/28 09:36:21.671]: Test: [  0/317]  Time 2.049 (2.049)  Loss 1.506 (1.506)  Mem 13028
+[02/28 09:37:05.699]: => synchronize...
+[02/28 09:37:29.648]:   mAP: 80.17567277098553
+[02/28 09:37:31.476]: Test: [  0/317]  Time 1.819 (1.819)  Loss 2.995 (2.995)  Mem 13028
+[02/28 09:38:15.322]: => synchronize...
+[02/28 09:38:37.539]:   mAP: 68.8765674793603
+[02/28 09:38:37.546]: => Test Epoch: [ 4/80]  ETA 9:25:58  TT 0:07:34 (0:37:43)  Loss 1.358  mAP 80.17567  Loss_ema 2.980  mAP_ema 68.87657
+[02/28 09:38:37.553]: 4 | Set best mAP 80.17567277098553 in ep 4
+[02/28 09:38:37.553]:    | best regular mAP 80.17567277098553 in ep 4
+[02/28 09:38:43.358]: lr:2.5336420138311012e-05
+[02/28 09:38:45.768]: Epoch: [5/80][  0/646]  T 2.408 (2.408)  DT 1.871 (1.871)  S1 13.3 (13.3)  SA 53.2 (53.2)  LR 2.535e-05  Loss 2.075 (2.075)  Mem 13028
+[02/28 09:41:56.269]: Epoch: [5/80][400/646]  T 0.477 (0.481)  DT 0.001 (0.005)  S1 67.1 (66.5)  SA 268.5 (266.1)  LR 3.039e-05  Loss 1.723 (1.512)  Mem 13028
+[02/28 09:43:54.454]: Test: [  0/317]  Time 2.312 (2.312)  Loss 1.464 (1.464)  Mem 13028
+[02/28 09:44:37.992]: => synchronize...
+[02/28 09:45:02.021]:   mAP: 80.85971732775127
+[02/28 09:45:04.286]: Test: [  0/317]  Time 2.256 (2.256)  Loss 2.233 (2.233)  Mem 13028
+[02/28 09:45:49.793]: => synchronize...
+[02/28 09:46:10.779]:   mAP: 73.84183400653365
+[02/28 09:46:10.786]: => Test Epoch: [ 5/80]  ETA 9:18:31  TT 0:07:33 (0:45:17)  Loss 1.349  mAP 80.85972  Loss_ema 2.250  mAP_ema 73.84183
+[02/28 09:46:10.797]: 5 | Set best mAP 80.85971732775127 in ep 5
+[02/28 09:46:10.798]:    | best regular mAP 80.85971732775127 in ep 5
+[02/28 09:46:16.704]: lr:3.363625043660844e-05
+[02/28 09:46:19.288]: Epoch: [6/80][  0/646]  T 2.582 (2.582)  DT 2.078 (2.078)  S1 12.4 (12.4)  SA 49.6 (49.6)  LR 3.365e-05  Loss 1.083 (1.083)  Mem 13028
+[02/28 09:49:42.638]: Epoch: [6/80][400/646]  T 0.491 (0.514)  DT 0.000 (0.006)  S1 65.2 (62.3)  SA 260.8 (249.3)  LR 3.916e-05  Loss 1.422 (1.458)  Mem 13028
+[02/28 09:51:42.594]: Test: [  0/317]  Time 3.063 (3.063)  Loss 1.415 (1.415)  Mem 13028
+[02/28 09:52:27.270]: => synchronize...
+[02/28 09:52:48.555]:   mAP: 81.03568669638527
+[02/28 09:52:51.135]: Test: [  0/317]  Time 2.570 (2.570)  Loss 1.809 (1.809)  Mem 13028
+[02/28 09:53:32.948]: => synchronize...
+[02/28 09:53:56.516]:   mAP: 76.92431742060919
+[02/28 09:53:56.522]: => Test Epoch: [ 6/80]  ETA 9:13:12  TT 0:07:45 (0:53:02)  Loss 1.355  mAP 81.03569  Loss_ema 1.842  mAP_ema 76.92432
+[02/28 09:53:56.529]: 6 | Set best mAP 81.03568669638527 in ep 6
+[02/28 09:53:56.530]:    | best regular mAP 81.03568669638527 in ep 6
+[02/28 09:54:02.382]: lr:4.264192546631377e-05
+[02/28 09:54:05.117]: Epoch: [7/80][  0/646]  T 2.733 (2.733)  DT 2.255 (2.255)  S1 11.7 (11.7)  SA 46.8 (46.8)  LR 4.266e-05  Loss 1.370 (1.370)  Mem 13028
+[02/28 09:57:16.422]: Epoch: [7/80][400/646]  T 0.466 (0.484)  DT 0.000 (0.006)  S1 68.7 (66.1)  SA 274.7 (264.5)  LR 4.844e-05  Loss 1.581 (1.410)  Mem 13028
+[02/28 09:59:15.561]: Test: [  0/317]  Time 2.782 (2.782)  Loss 1.373 (1.373)  Mem 13028
+[02/28 09:59:59.125]: => synchronize...
+[02/28 10:00:20.263]:   mAP: 81.11973422365433
+[02/28 10:00:22.820]: Test: [  0/317]  Time 2.546 (2.546)  Loss 1.557 (1.557)  Mem 13028
+[02/28 10:01:06.385]: => synchronize...
+[02/28 10:01:27.906]:   mAP: 79.03728802848178
+[02/28 10:01:27.912]: => Test Epoch: [ 7/80]  ETA 9:05:08  TT 0:07:31 (1:00:34)  Loss 1.354  mAP 81.11973  Loss_ema 1.603  mAP_ema 79.03729
+[02/28 10:01:27.920]: 7 | Set best mAP 81.11973422365433 in ep 7
+[02/28 10:01:27.920]:    | best regular mAP 81.11973422365433 in ep 7
+[02/28 10:01:33.879]: lr:5.2007295425582576e-05
+[02/28 10:01:36.221]: Epoch: [8/80][  0/646]  T 2.339 (2.339)  DT 1.818 (1.818)  S1 13.7 (13.7)  SA 54.7 (54.7)  LR 5.202e-05  Loss 1.883 (1.883)  Mem 13028
+[02/28 10:04:48.425]: Epoch: [8/80][400/646]  T 0.467 (0.485)  DT 0.000 (0.005)  S1 68.5 (66.0)  SA 274.0 (263.8)  LR 5.784e-05  Loss 1.264 (1.380)  Mem 13028
+[02/28 10:06:47.230]: Test: [  0/317]  Time 2.635 (2.635)  Loss 1.404 (1.404)  Mem 13028
+[02/28 10:07:29.928]: => synchronize...
+[02/28 10:07:52.364]:   mAP: 81.52645270222072
+[02/28 10:07:55.250]: Test: [  0/317]  Time 2.877 (2.877)  Loss 1.403 (1.403)  Mem 13028
+[02/28 10:08:38.226]: => synchronize...
+[02/28 10:08:59.131]:   mAP: 80.57636652386778
+[02/28 10:08:59.138]: => Test Epoch: [ 8/80]  ETA 8:57:10  TT 0:07:31 (1:08:05)  Loss 1.348  mAP 81.52645  Loss_ema 1.460  mAP_ema 80.57637
+[02/28 10:08:59.145]: 8 | Set best mAP 81.52645270222072 in ep 8
+[02/28 10:08:59.145]:    | best regular mAP 81.52645270222072 in ep 8
+[02/28 10:09:04.973]: lr:6.13723849716551e-05
+[02/28 10:09:07.390]: Epoch: [9/80][  0/646]  T 2.415 (2.415)  DT 1.834 (1.834)  S1 13.2 (13.2)  SA 53.0 (53.0)  LR 6.139e-05  Loss 1.207 (1.207)  Mem 13028
+[02/28 10:12:25.590]: Epoch: [9/80][400/646]  T 0.465 (0.500)  DT 0.000 (0.005)  S1 68.9 (64.0)  SA 275.4 (255.9)  LR 6.703e-05  Loss 1.015 (1.328)  Mem 13028
+[02/28 10:14:27.500]: Test: [  0/317]  Time 2.848 (2.848)  Loss 1.413 (1.413)  Mem 13028
+[02/28 10:15:10.056]: => synchronize...
+[02/28 10:15:31.554]:   mAP: 81.58654787717167
+[02/28 10:15:34.483]: Test: [  0/317]  Time 2.918 (2.918)  Loss 1.308 (1.308)  Mem 13028
+[02/28 10:16:17.280]: => synchronize...
+[02/28 10:16:38.527]:   mAP: 81.72129516232305
+[02/28 10:16:38.533]: => Test Epoch: [ 9/80]  ETA 8:50:14  TT 0:07:39 (1:15:44)  Loss 1.375  mAP 81.58655  Loss_ema 1.378  mAP_ema 81.72130
+[02/28 10:16:38.540]: 9 | Set best mAP 81.72129516232305 in ep 9
+[02/28 10:16:38.540]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:16:44.436]: lr:7.03772295399722e-05
+[02/28 10:16:46.919]: Epoch: [10/80][  0/646]  T 2.479 (2.479)  DT 1.899 (1.899)  S1 12.9 (12.9)  SA 51.6 (51.6)  LR 7.039e-05  Loss 1.271 (1.271)  Mem 13028
+[02/28 10:20:01.107]: Epoch: [10/80][400/646]  T 0.470 (0.490)  DT 0.000 (0.005)  S1 68.1 (65.2)  SA 272.4 (261.0)  LR 7.563e-05  Loss 1.354 (1.301)  Mem 13028
+[02/28 10:22:01.342]: Test: [  0/317]  Time 2.462 (2.462)  Loss 1.589 (1.589)  Mem 13028
+[02/28 10:22:45.269]: => synchronize...
+[02/28 10:23:06.553]:   mAP: 81.28698585507746
+[02/28 10:23:08.991]: Test: [  0/317]  Time 2.429 (2.429)  Loss 1.276 (1.276)  Mem 13028
+[02/28 10:23:52.808]: => synchronize...
+[02/28 10:24:13.855]:   mAP: 82.61584561604802
+[02/28 10:24:13.861]: => Test Epoch: [10/80]  ETA 8:42:45  TT 0:07:35 (1:23:20)  Loss 1.429  mAP 81.28699  Loss_ema 1.336  mAP_ema 82.61585
+[02/28 10:24:13.868]: 10 | Set best mAP 82.61584561604802 in ep 10
+[02/28 10:24:13.868]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:24:19.795]: lr:7.86757112490113e-05
+[02/28 10:24:22.135]: Epoch: [11/80][  0/646]  T 2.337 (2.337)  DT 1.836 (1.836)  S1 13.7 (13.7)  SA 54.8 (54.8)  LR 7.869e-05  Loss 1.243 (1.243)  Mem 13028
+[02/28 10:27:36.147]: Epoch: [11/80][400/646]  T 0.487 (0.490)  DT 0.000 (0.005)  S1 65.7 (65.4)  SA 262.6 (261.4)  LR 8.333e-05  Loss 0.756 (1.287)  Mem 13028
+[02/28 10:29:35.000]: Test: [  0/317]  Time 1.985 (1.985)  Loss 1.581 (1.581)  Mem 13028
+[02/28 10:30:18.877]: => synchronize...
+[02/28 10:30:39.922]:   mAP: 81.51898008195393
+[02/28 10:30:41.937]: Test: [  0/317]  Time 2.006 (2.006)  Loss 1.286 (1.286)  Mem 13028
+[02/28 10:31:24.288]: => synchronize...
+[02/28 10:31:47.515]:   mAP: 83.24159868345403
+[02/28 10:31:47.521]: => Test Epoch: [11/80]  ETA 8:35:05  TT 0:07:33 (1:30:53)  Loss 1.397  mAP 81.51898  Loss_ema 1.318  mAP_ema 83.24160
+[02/28 10:31:47.528]: 11 | Set best mAP 83.24159868345403 in ep 11
+[02/28 10:31:47.528]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:31:53.399]: lr:8.594886258220984e-05
+[02/28 10:31:55.662]: Epoch: [12/80][  0/646]  T 2.260 (2.260)  DT 1.724 (1.724)  S1 14.2 (14.2)  SA 56.6 (56.6)  LR 8.596e-05  Loss 1.266 (1.266)  Mem 13028
+[02/28 10:35:09.035]: Epoch: [12/80][400/646]  T 0.474 (0.488)  DT 0.001 (0.005)  S1 67.4 (65.6)  SA 269.8 (262.4)  LR 8.982e-05  Loss 1.168 (1.276)  Mem 13028
+[02/28 10:37:07.616]: Test: [  0/317]  Time 2.446 (2.446)  Loss 1.420 (1.420)  Mem 13028
+[02/28 10:37:51.598]: => synchronize...
+[02/28 10:38:14.633]:   mAP: 81.18915800723148
+[02/28 10:38:17.306]: Test: [  0/317]  Time 2.663 (2.663)  Loss 1.292 (1.292)  Mem 13028
+[02/28 10:38:58.956]: => synchronize...
+[02/28 10:39:22.457]:   mAP: 83.72157758756578
+[02/28 10:39:22.464]: => Test Epoch: [12/80]  ETA 8:27:33  TT 0:07:34 (1:38:28)  Loss 1.425  mAP 81.18916  Loss_ema 1.309  mAP_ema 83.72158
+[02/28 10:39:22.471]: 12 | Set best mAP 83.72157758756578 in ep 12
+[02/28 10:39:22.471]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:39:28.323]: lr:9.191712649531885e-05
+[02/28 10:39:30.846]: Epoch: [13/80][  0/646]  T 2.519 (2.519)  DT 2.013 (2.013)  S1 12.7 (12.7)  SA 50.8 (50.8)  LR 9.193e-05  Loss 1.333 (1.333)  Mem 13028
+[02/28 10:42:41.606]: Epoch: [13/80][400/646]  T 0.469 (0.482)  DT 0.000 (0.005)  S1 68.2 (66.4)  SA 272.6 (265.6)  LR 9.486e-05  Loss 1.230 (1.218)  Mem 13028
+[02/28 10:44:44.595]: Test: [  0/317]  Time 2.779 (2.779)  Loss 1.468 (1.468)  Mem 13028
+[02/28 10:45:28.162]: => synchronize...
+[02/28 10:45:49.472]:   mAP: 81.08908301382887
+[02/28 10:45:52.066]: Test: [  0/317]  Time 2.583 (2.583)  Loss 1.315 (1.315)  Mem 13028
+[02/28 10:46:38.872]: => synchronize...
+[02/28 10:47:02.736]:   mAP: 84.05946336125447
+[02/28 10:47:02.742]: => Test Epoch: [13/80]  ETA 8:20:25  TT 0:07:40 (1:46:09)  Loss 1.425  mAP 81.08908  Loss_ema 1.304  mAP_ema 84.05946
+[02/28 10:47:02.749]: 13 | Set best mAP 84.05946336125447 in ep 13
+[02/28 10:47:02.749]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:47:08.701]: lr:9.635110170924889e-05
+[02/28 10:47:11.027]: Epoch: [14/80][  0/646]  T 2.323 (2.323)  DT 1.809 (1.809)  S1 13.8 (13.8)  SA 55.1 (55.1)  LR 9.636e-05  Loss 1.655 (1.655)  Mem 13028
+[02/28 10:50:26.142]: Epoch: [14/80][400/646]  T 0.472 (0.492)  DT 0.000 (0.005)  S1 67.8 (65.0)  SA 271.3 (260.0)  LR 9.825e-05  Loss 1.159 (1.206)  Mem 13028
+[02/28 10:52:27.420]: Test: [  0/317]  Time 2.341 (2.341)  Loss 1.382 (1.382)  Mem 13028
+[02/28 10:53:10.662]: => synchronize...
+[02/28 10:53:32.458]:   mAP: 81.14661107260885
+[02/28 10:53:35.523]: Test: [  0/317]  Time 3.055 (3.055)  Loss 1.341 (1.341)  Mem 13028
+[02/28 10:54:18.946]: => synchronize...
+[02/28 10:54:40.187]:   mAP: 84.30051975192575
+[02/28 10:54:40.194]: => Test Epoch: [14/80]  ETA 8:13:01  TT 0:07:37 (1:53:46)  Loss 1.488  mAP 81.14661  Loss_ema 1.301  mAP_ema 84.30052
+[02/28 10:54:40.200]: 14 | Set best mAP 84.30051975192575 in ep 14
+[02/28 10:54:40.201]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 10:54:46.127]: lr:9.908036017317397e-05
+[02/28 10:54:48.399]: Epoch: [15/80][  0/646]  T 2.269 (2.269)  DT 1.749 (1.749)  S1 14.1 (14.1)  SA 56.4 (56.4)  LR 9.908e-05  Loss 0.779 (0.779)  Mem 13028
+[02/28 10:58:00.393]: Epoch: [15/80][400/646]  T 0.474 (0.484)  DT 0.001 (0.005)  S1 67.6 (66.1)  SA 270.3 (264.2)  LR 9.987e-05  Loss 1.453 (1.152)  Mem 13028
+[02/28 11:00:00.385]: Test: [  0/317]  Time 2.872 (2.872)  Loss 1.633 (1.633)  Mem 13028
+[02/28 11:00:42.499]: => synchronize...
+[02/28 11:01:04.528]:   mAP: 80.76437162350551
+[02/28 11:01:07.233]: Test: [  0/317]  Time 2.696 (2.696)  Loss 1.354 (1.354)  Mem 13028
+[02/28 11:01:50.365]: => synchronize...
+[02/28 11:02:11.383]:   mAP: 84.4513237698835
+[02/28 11:02:11.390]: => Test Epoch: [15/80]  ETA 8:05:11  TT 0:07:31 (2:01:17)  Loss 1.483  mAP 80.76437  Loss_ema 1.298  mAP_ema 84.45132
+[02/28 11:02:11.396]: 15 | Set best mAP 84.4513237698835 in ep 15
+[02/28 11:02:11.396]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:02:17.319]: lr:9.999999985565125e-05
+[02/28 11:02:19.685]: Epoch: [16/80][  0/646]  T 2.362 (2.362)  DT 1.862 (1.862)  S1 13.5 (13.5)  SA 54.2 (54.2)  LR 1.000e-04  Loss 1.175 (1.175)  Mem 13028
+[02/28 11:05:31.142]: Epoch: [16/80][400/646]  T 0.502 (0.483)  DT 0.000 (0.005)  S1 63.8 (66.2)  SA 255.2 (264.8)  LR 9.998e-05  Loss 1.107 (1.139)  Mem 13028
+[02/28 11:07:29.307]: Test: [  0/317]  Time 2.027 (2.027)  Loss 1.536 (1.536)  Mem 13028
+[02/28 11:08:12.770]: => synchronize...
+[02/28 11:08:33.800]:   mAP: 81.00520642772233
+[02/28 11:08:36.166]: Test: [  0/317]  Time 2.356 (2.356)  Loss 1.360 (1.360)  Mem 13028
+[02/28 11:09:19.614]: => synchronize...
+[02/28 11:09:40.629]:   mAP: 84.58908575349153
+[02/28 11:09:40.636]: => Test Epoch: [16/80]  ETA 7:57:15  TT 0:07:29 (2:08:46)  Loss 1.458  mAP 81.00521  Loss_ema 1.293  mAP_ema 84.58909
+[02/28 11:09:40.642]: 16 | Set best mAP 84.58908575349153 in ep 16
+[02/28 11:09:40.642]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:09:46.595]: lr:9.993958648329325e-05
+[02/28 11:09:48.926]: Epoch: [17/80][  0/646]  T 2.328 (2.328)  DT 1.815 (1.815)  S1 13.7 (13.7)  SA 55.0 (55.0)  LR 9.994e-05  Loss 0.960 (0.960)  Mem 13028
+[02/28 11:13:01.574]: Epoch: [17/80][400/646]  T 0.495 (0.486)  DT 0.000 (0.005)  S1 64.6 (65.8)  SA 258.4 (263.3)  LR 9.984e-05  Loss 1.100 (1.111)  Mem 13028
+[02/28 11:15:02.474]: Test: [  0/317]  Time 2.837 (2.837)  Loss 1.737 (1.737)  Mem 13028
+[02/28 11:15:46.219]: => synchronize...
+[02/28 11:16:07.191]:   mAP: 80.73867363883267
+[02/28 11:16:09.830]: Test: [  0/317]  Time 2.629 (2.629)  Loss 1.361 (1.361)  Mem 13028
+[02/28 11:16:53.281]: => synchronize...
+[02/28 11:17:16.037]:   mAP: 84.68053111177123
+[02/28 11:17:16.043]: => Test Epoch: [17/80]  ETA 7:49:43  TT 0:07:35 (2:16:22)  Loss 1.579  mAP 80.73867  Loss_ema 1.289  mAP_ema 84.68053
+[02/28 11:17:16.051]: 17 | Set best mAP 84.68053111177123 in ep 17
+[02/28 11:17:16.052]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:17:22.017]: lr:9.975886475472334e-05
+[02/28 11:17:24.536]: Epoch: [18/80][  0/646]  T 2.515 (2.515)  DT 2.035 (2.035)  S1 12.7 (12.7)  SA 50.9 (50.9)  LR 9.976e-05  Loss 0.960 (0.960)  Mem 13028
+[02/28 11:20:35.415]: Epoch: [18/80][400/646]  T 0.459 (0.482)  DT 0.000 (0.005)  S1 69.8 (66.4)  SA 279.0 (265.4)  LR 9.959e-05  Loss 1.029 (1.084)  Mem 13028
+[02/28 11:22:35.518]: Test: [  0/317]  Time 2.559 (2.559)  Loss 1.508 (1.508)  Mem 13028
+[02/28 11:23:19.545]: => synchronize...
+[02/28 11:23:44.654]:   mAP: 80.97185963338582
+[02/28 11:23:47.037]: Test: [  0/317]  Time 2.374 (2.374)  Loss 1.372 (1.372)  Mem 13028
+[02/28 11:24:29.775]: => synchronize...
+[02/28 11:24:51.608]:   mAP: 84.73465807740664
+[02/28 11:24:51.614]: => Test Epoch: [18/80]  ETA 7:42:12  TT 0:07:35 (2:23:57)  Loss 1.528  mAP 80.97186  Loss_ema 1.289  mAP_ema 84.73466
+[02/28 11:24:51.621]: 18 | Set best mAP 84.73465807740664 in ep 18
+[02/28 11:24:51.621]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:24:57.541]: lr:9.945827004441502e-05
+[02/28 11:24:59.790]: Epoch: [19/80][  0/646]  T 2.247 (2.247)  DT 1.758 (1.758)  S1 14.2 (14.2)  SA 57.0 (57.0)  LR 9.946e-05  Loss 0.675 (0.675)  Mem 13028
+[02/28 11:28:08.469]: Epoch: [19/80][400/646]  T 0.467 (0.476)  DT 0.001 (0.005)  S1 68.5 (67.2)  SA 273.9 (268.8)  LR 9.921e-05  Loss 0.971 (1.049)  Mem 13028
+[02/28 11:30:10.259]: Test: [  0/317]  Time 2.153 (2.153)  Loss 1.713 (1.713)  Mem 13028
+[02/28 11:30:53.666]: => synchronize...
+[02/28 11:31:14.723]:   mAP: 80.83104253400847
+[02/28 11:31:17.347]: Test: [  0/317]  Time 2.613 (2.613)  Loss 1.404 (1.404)  Mem 13028
+[02/28 11:32:01.483]: => synchronize...
+[02/28 11:32:22.404]:   mAP: 84.73956534409334
+[02/28 11:32:22.410]: => Test Epoch: [19/80]  ETA 7:34:26  TT 0:07:30 (2:31:28)  Loss 1.561  mAP 80.83104  Loss_ema 1.291  mAP_ema 84.73957
+[02/28 11:32:22.417]: 19 | Set best mAP 84.73956534409334 in ep 19
+[02/28 11:32:22.417]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:32:28.341]: lr:9.90385265113544e-05
+[02/28 11:32:30.926]: Epoch: [20/80][  0/646]  T 2.581 (2.581)  DT 2.075 (2.075)  S1 12.4 (12.4)  SA 49.6 (49.6)  LR 9.904e-05  Loss 1.327 (1.327)  Mem 13028
+[02/28 11:35:43.686]: Epoch: [20/80][400/646]  T 0.505 (0.487)  DT 0.000 (0.006)  S1 63.3 (65.7)  SA 253.3 (262.8)  LR 9.872e-05  Loss 0.892 (1.005)  Mem 13028
+[02/28 11:37:46.671]: Test: [  0/317]  Time 2.298 (2.298)  Loss 1.481 (1.481)  Mem 13028
+[02/28 11:38:30.290]: => synchronize...
+[02/28 11:38:51.157]:   mAP: 80.88502520955137
+[02/28 11:38:53.280]: Test: [  0/317]  Time 2.114 (2.114)  Loss 1.440 (1.440)  Mem 13028
+[02/28 11:39:37.286]: => synchronize...
+[02/28 11:39:58.252]:   mAP: 84.72532516040982
+[02/28 11:39:58.258]: => Test Epoch: [20/80]  ETA 7:26:55  TT 0:07:35 (2:39:04)  Loss 1.533  mAP 80.88503  Loss_ema 1.299  mAP_ema 84.72533
+[02/28 11:39:58.265]: 20 | Set best mAP 84.73956534409334 in ep 19
+[02/28 11:39:58.265]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:39:58.282]: lr:9.85006453544778e-05
+[02/28 11:40:01.929]: Epoch: [21/80][  0/646]  T 3.645 (3.645)  DT 2.480 (2.480)  S1 8.8 (8.8)  SA 35.1 (35.1)  LR 9.850e-05  Loss 1.077 (1.077)  Mem 13028
+[02/28 11:43:15.824]: Epoch: [21/80][400/646]  T 0.496 (0.493)  DT 0.000 (0.007)  S1 64.5 (65.0)  SA 258.0 (259.8)  LR 9.811e-05  Loss 1.118 (0.979)  Mem 13028
+[02/28 11:45:16.109]: Test: [  0/317]  Time 2.432 (2.432)  Loss 1.714 (1.714)  Mem 13028
+[02/28 11:45:59.768]: => synchronize...
+[02/28 11:46:20.667]:   mAP: 80.66777199538548
+[02/28 11:46:23.158]: Test: [  0/317]  Time 2.481 (2.481)  Loss 1.447 (1.447)  Mem 13028
+[02/28 11:47:06.027]: => synchronize...
+[02/28 11:47:28.083]:   mAP: 84.68574458735692
+[02/28 11:47:28.089]: => Test Epoch: [21/80]  ETA 7:19:09  TT 0:07:29 (2:46:34)  Loss 1.565  mAP 80.66777  Loss_ema 1.311  mAP_ema 84.68574
+[02/28 11:47:28.096]: 21 | Set best mAP 84.73956534409334 in ep 19
+[02/28 11:47:28.097]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:47:28.113]: lr:9.784592237660501e-05
+[02/28 11:47:32.158]: Epoch: [22/80][  0/646]  T 4.043 (4.043)  DT 2.930 (2.930)  S1 7.9 (7.9)  SA 31.7 (31.7)  LR 9.784e-05  Loss 0.743 (0.743)  Mem 13028
+[02/28 11:50:41.796]: Epoch: [22/80][400/646]  T 0.477 (0.483)  DT 0.000 (0.008)  S1 67.0 (66.3)  SA 268.1 (265.0)  LR 9.738e-05  Loss 1.027 (0.950)  Mem 13028
+[02/28 11:52:41.524]: Test: [  0/317]  Time 2.248 (2.248)  Loss 1.989 (1.989)  Mem 13028
+[02/28 11:53:25.276]: => synchronize...
+[02/28 11:53:46.867]:   mAP: 80.32054980950144
+[02/28 11:53:48.982]: Test: [  0/317]  Time 2.106 (2.106)  Loss 1.506 (1.506)  Mem 13028
+[02/28 11:54:32.819]: => synchronize...
+[02/28 11:54:53.964]:   mAP: 84.62341608012676
+[02/28 11:54:53.970]: => Test Epoch: [22/80]  ETA 7:11:13  TT 0:07:25 (2:54:00)  Loss 1.788  mAP 80.32055  Loss_ema 1.326  mAP_ema 84.62342
+[02/28 11:54:53.976]: 22 | Set best mAP 84.73956534409334 in ep 19
+[02/28 11:54:53.977]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 11:54:53.994]: lr:9.707593486273662e-05
+[02/28 11:54:58.130]: Epoch: [23/80][  0/646]  T 4.133 (4.133)  DT 2.982 (2.982)  S1 7.7 (7.7)  SA 31.0 (31.0)  LR 9.707e-05  Loss 0.966 (0.966)  Mem 13028
+[02/28 11:58:09.641]: Epoch: [23/80][400/646]  T 0.497 (0.488)  DT 0.001 (0.008)  S1 64.4 (65.6)  SA 257.7 (262.4)  LR 9.654e-05  Loss 0.837 (0.907)  Mem 13028
+[02/28 12:00:15.353]: Test: [  0/317]  Time 3.283 (3.283)  Loss 1.896 (1.896)  Mem 13028
+[02/28 12:00:59.033]: => synchronize...
+[02/28 12:01:21.367]:   mAP: 80.43786146733503
+[02/28 12:01:24.045]: Test: [  0/317]  Time 2.668 (2.668)  Loss 1.538 (1.538)  Mem 13028
+[02/28 12:02:06.200]: => synchronize...
+[02/28 12:02:29.225]:   mAP: 84.55626505598471
+[02/28 12:02:29.232]: => Test Epoch: [23/80]  ETA 7:03:43  TT 0:07:35 (3:01:35)  Loss 1.652  mAP 80.43786  Loss_ema 1.344  mAP_ema 84.55627
+[02/28 12:02:29.239]: 23 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:02:29.239]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:02:29.256]: lr:9.619253778023654e-05
+[02/28 12:02:32.976]: Epoch: [24/80][  0/646]  T 3.717 (3.717)  DT 2.669 (2.669)  S1 8.6 (8.6)  SA 34.4 (34.4)  LR 9.619e-05  Loss 0.928 (0.928)  Mem 13028
+[02/28 12:05:44.953]: Epoch: [24/80][400/646]  T 0.463 (0.488)  DT 0.000 (0.007)  S1 69.1 (65.6)  SA 276.2 (262.3)  LR 9.559e-05  Loss 1.108 (0.900)  Mem 13028
+[02/28 12:07:44.343]: Test: [  0/317]  Time 2.492 (2.492)  Loss 1.860 (1.860)  Mem 13028
+[02/28 12:08:28.067]: => synchronize...
+[02/28 12:08:49.364]:   mAP: 80.28533520674489
+[02/28 12:08:51.509]: Test: [  0/317]  Time 2.136 (2.136)  Loss 1.564 (1.564)  Mem 13028
+[02/28 12:09:35.653]: => synchronize...
+[02/28 12:09:56.778]:   mAP: 84.49693329967292
+[02/28 12:09:56.785]: => Test Epoch: [24/80]  ETA 6:55:54  TT 0:07:27 (3:09:03)  Loss 1.775  mAP 80.28534  Loss_ema 1.365  mAP_ema 84.49693
+[02/28 12:09:56.791]: 24 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:09:56.792]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:09:56.808]: lr:9.51978593100529e-05
+[02/28 12:10:00.959]: Epoch: [25/80][  0/646]  T 4.148 (4.148)  DT 2.020 (2.020)  S1 7.7 (7.7)  SA 30.9 (30.9)  LR 9.520e-05  Loss 1.322 (1.322)  Mem 13028
+[02/28 12:13:10.938]: Epoch: [25/80][400/646]  T 0.473 (0.484)  DT 0.000 (0.005)  S1 67.7 (66.1)  SA 270.7 (264.4)  LR 9.453e-05  Loss 1.155 (0.871)  Mem 13028
+[02/28 12:15:09.342]: Test: [  0/317]  Time 2.103 (2.103)  Loss 1.823 (1.823)  Mem 13028
+[02/28 12:15:54.105]: => synchronize...
+[02/28 12:16:15.798]:   mAP: 80.13429462019272
+[02/28 12:16:18.544]: Test: [  0/317]  Time 2.738 (2.738)  Loss 1.591 (1.591)  Mem 13028
+[02/28 12:17:02.417]: => synchronize...
+[02/28 12:17:23.380]:   mAP: 84.40581372486781
+[02/28 12:17:23.387]: => Test Epoch: [25/80]  ETA 6:48:06  TT 0:07:26 (3:16:29)  Loss 1.785  mAP 80.13429  Loss_ema 1.388  mAP_ema 84.40581
+[02/28 12:17:23.393]: 25 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:17:23.394]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:17:23.411]: lr:9.409429571974396e-05
+[02/28 12:17:27.049]: Epoch: [26/80][  0/646]  T 3.636 (3.636)  DT 2.502 (2.502)  S1 8.8 (8.8)  SA 35.2 (35.2)  LR 9.409e-05  Loss 0.448 (0.448)  Mem 13028
+[02/28 12:20:39.870]: Epoch: [26/80][400/646]  T 0.464 (0.490)  DT 0.000 (0.007)  S1 69.0 (65.3)  SA 276.1 (261.3)  LR 9.336e-05  Loss 0.656 (0.858)  Mem 13028
+[02/28 12:22:39.044]: Test: [  0/317]  Time 3.006 (3.006)  Loss 1.904 (1.904)  Mem 13028
+[02/28 12:23:21.963]: => synchronize...
+[02/28 12:23:44.241]:   mAP: 80.43394721967488
+[02/28 12:23:47.389]: Test: [  0/317]  Time 3.139 (3.139)  Loss 1.629 (1.629)  Mem 13028
+[02/28 12:24:30.150]: => synchronize...
+[02/28 12:24:51.173]:   mAP: 84.29985666950218
+[02/28 12:24:51.180]: => Test Epoch: [26/80]  ETA 6:40:21  TT 0:07:27 (3:23:57)  Loss 1.882  mAP 80.43395  Loss_ema 1.414  mAP_ema 84.29986
+[02/28 12:24:51.186]: 26 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:24:51.186]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:24:51.205]: lr:9.288450559065952e-05
+[02/28 12:24:55.262]: Epoch: [27/80][  0/646]  T 4.054 (4.054)  DT 3.032 (3.032)  S1 7.9 (7.9)  SA 31.6 (31.6)  LR 9.288e-05  Loss 0.858 (0.858)  Mem 13028
+[02/28 12:28:04.907]: Epoch: [27/80][400/646]  T 0.468 (0.483)  DT 0.000 (0.008)  S1 68.4 (66.2)  SA 273.6 (265.0)  LR 9.208e-05  Loss 0.983 (0.810)  Mem 13028
+[02/28 12:30:09.154]: Test: [  0/317]  Time 3.112 (3.112)  Loss 1.659 (1.659)  Mem 13028
+[02/28 12:30:52.753]: => synchronize...
+[02/28 12:31:14.981]:   mAP: 80.1035453486164
+[02/28 12:31:17.726]: Test: [  0/317]  Time 2.732 (2.732)  Loss 1.657 (1.657)  Mem 13028
+[02/28 12:32:01.332]: => synchronize...
+[02/28 12:32:22.462]:   mAP: 84.19598119366381
+[02/28 12:32:22.474]: => Test Epoch: [27/80]  ETA 6:32:44  TT 0:07:31 (3:31:28)  Loss 1.777  mAP 80.10355  Loss_ema 1.441  mAP_ema 84.19598
+[02/28 12:32:22.481]: 27 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:32:22.482]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:32:22.498]: lr:9.157140341318564e-05
+[02/28 12:32:26.193]: Epoch: [28/80][  0/646]  T 3.692 (3.692)  DT 2.230 (2.230)  S1 8.7 (8.7)  SA 34.7 (34.7)  LR 9.157e-05  Loss 0.821 (0.821)  Mem 13028
+[02/28 12:35:43.328]: Epoch: [28/80][400/646]  T 0.489 (0.501)  DT 0.000 (0.006)  S1 65.5 (63.9)  SA 262.0 (255.6)  LR 9.071e-05  Loss 0.808 (0.781)  Mem 13028
+[02/28 12:37:42.737]: Test: [  0/317]  Time 2.852 (2.852)  Loss 1.601 (1.601)  Mem 13028
+[02/28 12:38:27.073]: => synchronize...
+[02/28 12:38:49.135]:   mAP: 80.12116190523307
+[02/28 12:38:51.563]: Test: [  0/317]  Time 2.417 (2.417)  Loss 1.670 (1.670)  Mem 13028
+[02/28 12:39:35.443]: => synchronize...
+[02/28 12:39:56.758]:   mAP: 84.07506204037877
+[02/28 12:39:56.766]: => Test Epoch: [28/80]  ETA 6:25:13  TT 0:07:34 (3:39:03)  Loss 1.880  mAP 80.12116  Loss_ema 1.473  mAP_ema 84.07506
+[02/28 12:39:56.773]: 28 | Set best mAP 84.73956534409334 in ep 19
+[02/28 12:39:56.773]:    | best regular mAP 81.58654787717167 in ep 9
+[02/28 12:39:56.774]: epoch - best_epoch = 9, stop!
+[02/28 12:39:56.774]: Best mAP 84.73956534409334:

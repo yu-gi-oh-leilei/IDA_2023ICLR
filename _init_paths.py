@@ -10,7 +10,8 @@ def add_path(path):
         sys.path.insert(0, path)
 
 this_dir = osp.dirname(__file__)
-lib_path = osp.join(this_dir, 'all_lib/lib_new_attention')
+# lib_path = osp.join(this_dir, 'all_lib/lib_new_attention')
+lib_path = osp.join(this_dir, 'all_lib/lib_org_backbone')
 add_path(lib_path)
 # /media/data/maleilei/MLIC/CCD_MLIC
 
