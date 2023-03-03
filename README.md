@@ -48,20 +48,21 @@ Download [MS-COCO 2014](https://cocodataset.org/#download).
 # single node multi processes
 torchrun --nnodes=1 --nproc_per_node=4 --rdzv_id=100 --rdzv_backend=c10d \
 main_mlc.py -a 'IDA-R101-448' \
---dataset_dir '/path/to/MLICdataset/' \
+--dataset_dir '/media/data/maleilei/MLICdataset/' \
 --backbone resnet101 --dataname coco14 --batch-size 128 --print-freq 400 \
---output './checkpoint/IDA/ResNet_448_MSCOCO14/bce_attention_bs128_work1' \
+--output './checkpoint/IDA/ResNet_448_MSCOCO14/bce_attention_bs128_work2' \
 --world-size 1 --rank 0 --dist-url tcp://127.0.0.1:3718 \
 --gamma_pos 0 --gamma_neg 0 --dtgfl --loss_clip 0 \
---epochs 80 --lr 1e-4 --optim AdamW --pretrained \
+--epochs 80 --lr 1e-4 --optim Adam_twd --pretrained \
 --num_class 80 --img_size 448 --weight-decay 1e-4 \
 --cutout --n_holes 1 --cut_fact 0.5 --length 224 \
 --nheads 4 --use_intervention --heavy \
 --early-stop \
+--use_BN \
 --ema-decay 0.9997 --amp \
 --seed 1 \
 --lr_scheduler OneCycleLR \
---pattern_parameters single_lr \
+--pattern_parameters add_weight \
 --gpus 0,1,2,3
 ```
 
