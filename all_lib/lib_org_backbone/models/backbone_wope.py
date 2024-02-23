@@ -34,10 +34,6 @@ def get_model_path(modelname):
     PTDICT = {
         'CvT_w24': 'CvT-w24-384x384-IN-22k.pth',
         'swin_L_384_22k': 'swin_large_patch4_window12_384_22k.pth',
-        'tresnetl': 'tresnet_l_448.pth',
-        'tresnetxl': 'tresnet_xl_448.pth',
-        'tresnetl_v2': 'tresnet_l_v2_miil_21k.pth',
-        'tresnetl_v3': 'tresnet_l_pretrain_openimage.pth',
         'vit_L_16_224_22k': 'L_16-i21k-300ep-lr_0.001-aug_medium1-wd_0.1-do_0.1-sd_0.1.npz'
     }
     return os.path.join(pretrained_dir, PTDICT[modelname]) 
@@ -137,26 +133,6 @@ class Backbone(BackboneBase):
                 return_layers = {"layer1": "0", "layer2": "1", "layer3": "2", "layer4": "3"}
             else:
                 return_layers = {'layer4': "0"}
-        elif name in ['tresnetl', 'tresnetxl', 'tresnetl_v2', 'tresnetl_v3']:
-            backbone = getattr(models, name)(
-                {'num_classes': 1}
-            )
-            # load pretrained model
-            if pretrained:
-                pretrainedpath = get_model_path(name)
-                checkpoint = torch.load(pretrainedpath, map_location='cpu')
-                from collections import OrderedDict
-                if 'model' in checkpoint:
-                    checkpoint = checkpoint['model']
-                if 'state_dict' in checkpoint:
-                    checkpoint = checkpoint['state_dict']
-                _tmp_st = OrderedDict({k:v for k, v in clean_state_dict(checkpoint).items() if 'head.fc' not in k})
-
-                backbone.load_state_dict(_tmp_st, strict=False)
-            
-            if return_interm_layers:
-                raise NotImplementedError('return_interm_layers must be False in TResNet!')
-            return_layers = {'body': "0"}
         else:
             raise NotImplementedError("Unknow name: %s" % name)
             

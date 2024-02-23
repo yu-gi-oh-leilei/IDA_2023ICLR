@@ -116,24 +116,4 @@ def build_q2l(args):
 
     return model
 
-        # return out, hs[-1], contrast_feature
 
-
-        # print(contrast_feature.shape)
-        # print(contrast_feature)
-        # prototype, vis_embed = torch.unbind(contrast_feature, dim=0)
-
-        # prototype = F.normalize(self.proj_head(self.prototype), -1)
-        # vis_embed = F.normalize(self.proj_head(hs[-1]), -1)
-    
-
-        # prototype = F.normalize(self.prototype, -1).unsqueeze(0).repeat(out.size(0), 1, 1)
-        # vis_embed = F.normalize(hs[-1], -1)
-
-        # return out, hs[-1], vis_embed, prototype
-        # out = self.fc(self.mlp(hs[-1]-self.prototype)) # hs[-1].shape [16, 80, 2048]
-        # out = self.fc(hs[-1]-self.prototype)
-        # return out  
-        # return out, hs[-1]
-        # return out, hs[-1], self.prototype        
-        
