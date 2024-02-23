@@ -1,0 +1,12 @@
+tqdm
+einops
+addict
+yapf
+randaugment 
+termcolor 
+pyyaml 
+tensorboard 
+scikit-learn 
+timm 
+pycocotools 
+pandas
